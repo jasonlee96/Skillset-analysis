@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4edd35a3c8eaeeb0ca6341069e413b25",
+    "revision": "dbaebfe21dedcae2e15aabe2f9da925c",
     "url": "/Skillset-analysis/index.html"
   },
   {
-    "revision": "5e41f4bf7e3d29b2a5dd",
-    "url": "/Skillset-analysis/static/css/main.a5406dfb.chunk.css"
+    "revision": "4520ad42cbac86dfb1fa",
+    "url": "/Skillset-analysis/static/css/main.c9c2c08d.chunk.css"
   },
   {
-    "revision": "5c60aa85f2296a43c88d",
-    "url": "/Skillset-analysis/static/js/2.4e21514a.chunk.js"
+    "revision": "18418c6b49611e3ef61d",
+    "url": "/Skillset-analysis/static/js/2.abc3c061.chunk.js"
   },
   {
-    "revision": "e88a3e95b5364d46e95b35ae8c0dc27d",
-    "url": "/Skillset-analysis/static/js/2.4e21514a.chunk.js.LICENSE.txt"
+    "revision": "c64c486544348f10a6d6c716950bc223",
+    "url": "/Skillset-analysis/static/js/2.abc3c061.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "5e41f4bf7e3d29b2a5dd",
-    "url": "/Skillset-analysis/static/js/main.1ca5e5f1.chunk.js"
+    "revision": "4520ad42cbac86dfb1fa",
+    "url": "/Skillset-analysis/static/js/main.f8643cdc.chunk.js"
   },
   {
     "revision": "4503d39c45d7fee3c6a7",
