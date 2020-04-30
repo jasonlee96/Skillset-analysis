@@ -1,7 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import "../styles/SearchBar.css";
+import axios from 'axios';
+import { SearchContext } from '../contexts/SearchContext';
 
-const SearchBar = ({ pop, setPop}) => {
+const SearchBar = ({ pop, setPop }) => {
+    const INITIAL_STATE = {data: [], press: false, loading: false};
+    let [query, setQuery] = useState(INITIAL_STATE);
+    let [input, setInput] = useState("");
+    let { setKeyword } = useContext(SearchContext);
+
     function search(){
         if(pop){
             setPop(false);
@@ -11,6 +18,9 @@ const SearchBar = ({ pop, setPop}) => {
         }else{
             setPop(true);
         }
+        setQuery(INITIAL_STATE);
+        setInput("");
+        setKeyword(input);
     }
 
     function adjustTextLayer(){
@@ -34,7 +44,6 @@ const SearchBar = ({ pop, setPop}) => {
         let searchBar = document.querySelector(".bar");
         let scroll = window.pageYOffset;
         adjustTextLayer();
-
         window.addEventListener("resize", adjustTextLayer);
 
         document.addEventListener('scroll', (e)=>{
@@ -48,7 +57,19 @@ const SearchBar = ({ pop, setPop}) => {
                 searchBar.classList.remove("hide");
             }
         });
-    })
+    }, []);
+
+    useEffect(()=>{
+        async function getQueryData(){
+            let data = await axios.get('http://localhost:5000/api/search/'+input).then(res => res.data);
+
+            setQuery({...query, data: data, loading: false});
+        }
+        
+        if(query !== INITIAL_STATE && query.loading === true){
+            getQueryData();
+        }
+    }, [input]);
 
     return(
         <div className="bar shadow">
@@ -66,10 +87,35 @@ const SearchBar = ({ pop, setPop}) => {
                     </div>
                 </div>
             </div>
-            <input className="text-field" placeholder="Keywords...." type="text"/>
+            <input className="text-field" placeholder="Keywords...." type="text" value={input} onChange={(e) => {
+                setInput(e.target.value)
+                setQuery({...query, press: false, loading: true})
+            }}/>
+            {query.data.length > 0 && !query.press && <QueryBar data={query.data} setQuery={setQuery} setInput={setInput}/>}
             <button className="submit-btn" type="submit" onClick={search}>Search</button>
         </div>
     )
+}
+
+const QueryBar = (props) =>{
+    const { data, setQuery, setInput } = props;
+
+    function onClickItem(title){
+        setQuery({data:[], press: true});
+        setInput(title);
+    }
+
+    return(
+        <div className="query-container">
+            {data.map((item)=>{
+                return(
+                    <div className="query-item" key={item._id} onClick={()=>{onClickItem(item.title)}}>
+                        {item.title}
+                    </div>
+                );
+            })}
+        </div>
+    );
 }
 
 export default SearchBar;

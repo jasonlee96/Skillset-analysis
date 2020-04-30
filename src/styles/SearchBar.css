@@ -34,7 +34,7 @@
     top: 60px;
     left: 0px;
     background-color: #B0CD6B;
-    width: 125px;
+    width: 110px;
     justify-content: center;
 }
 
@@ -137,6 +137,39 @@
 
 .submit-btn:hover{
     background-color: #293520;
+}
+
+.query-container{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top:50px;
+    left: 108px;
+    width: 375px;
+    margin: 0 10px;
+    background: #FFFBAF;
+    border: 1px solid #DDDBAD;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.query-item{
+    display: flex;
+    font-size: 18px;
+    height: 100%;
+    border-bottom: 1px solid #DDDBAD;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.query-item:last-child{
+    border-bottom: none;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.query-item:hover {
+    background: #DDDBAD;
 }
 
 @media only screen and (max-width: 600px){

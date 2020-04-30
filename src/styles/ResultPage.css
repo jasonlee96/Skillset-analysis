@@ -20,7 +20,62 @@
     animation-duration: 1s;
 }
 
+.result-title{
+    color: #666;
+    border-bottom: 2px solid #EEA;
+}
+.result-title span{
+    color: black;
+    font-size: 40px;
+}
 
+.result-chart-type{
+    display: flex;
+    flex-direction: row;
+    color: black;
+    background-color: transparent;
+    font-size: 20px;
+    justify-content: center;
+    align-self: center;
+}
+
+.result-chart-type>div{
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    border: 1px solid #333;
+    border-right: 1px solid #333;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: 0.4s linear;
+}
+
+.result-chart-type>div:first-child{
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px; 
+}
+
+.result-chart-type>div:last-child{
+    border-left: none;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.result-chart-type>div:hover{
+    background: #EEA;
+}
+
+.result-chart-type .selected{
+    background: rgb(197, 197, 128);
+}
+
+.result-chart{
+    margin: 0 auto;
+    margin-top: 20px;
+    position: relative;
+    height: 550px;
+    width: 1000px;
+}
 /* @media only screen and (max-width: 1300px){
     .result-box{
         width: 800px
