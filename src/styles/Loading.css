@@ -1,0 +1,60 @@
+.loading-container{
+	display: flex;
+	flex-direction: column;
+}
+.spinner {
+	width: 50px;
+	height: 50px;
+	clear: both;
+	margin: 20px auto;
+	position: relative;
+}
+.loading-text{
+	font-size: 36px;
+	font-family: "Baloo Paaji", cursive;
+}
+
+.spinner:before, .spinner:after  {
+	content:'';
+	border: 3px white solid;
+	border-radius: 50%;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left:0px;
+}
+
+.spinner:before {
+	transform: scale(1,1);
+	opacity: 1;
+	-webkit-animation: loadingB 0.6s infinite linear;
+	animation: loadingB 0.6s infinite linear;
+}
+.spinner:after {
+	transform: scale(0.5,0.5);
+	opacity: 0;
+	-webkit-animation: loadingA 0.6s infinite linear;
+	animation: loadingA 0.6s infinite linear;
+}
+
+@keyframes loadingA {
+	from{ 
+		transform: scale(0.5,0.5);
+		opacity: 0;
+ 	}
+	to{ 
+		transform: scale(1,1); 
+		opacity: 1; 
+	}
+}
+
+@keyframes loadingB {
+	from{ 
+		transform: scale(1,1); 
+		opacity: 1; 
+	}
+	to{ 
+		transform: scale(1.5,1.5); 
+		opacity: 0; 
+	}
+}

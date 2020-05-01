@@ -1,27 +1,29 @@
 import React, { useEffect, useContext, useState } from 'react';
 import "../styles/ResultPage.css";
 import axios from 'axios';
+import Loading from './Loading';
 import { SearchContext } from '../contexts/SearchContext';
 import Chart from 'chart.js';
 import ReactWordcloud from "react-wordcloud";
 
 const ResultPage = () => {
     let { keyword } = useContext(SearchContext);
-    let [data, setData] = useState({});
+    const INITIAL_STATE = { data: {}, loading: true };
+    let [state, setState] = useState(INITIAL_STATE);
     let [type, setType] = useState(0);
 
     const wordCloudOptions = {
-        colors: ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b"],
+        colors: ["#669911", "#119966", "#63c6c9", "#66A2EB", "#e45b65", "#b8412e", "#e568bd", "#5974c7"],
         enableTooltip: true,
         deterministic: true,
         fontFamily: "Baloo Paaji, cursive",
         fontSizes: [20, 100],
         fontStyle: "normal",
         fontWeight: "normal",
-        padding: 2,
+        padding: 5,
         rotations: 0,
         rotationAngles: [0],
-        scale: "sqrt",
+        scale: "log",
         spiral: "rectangular",
         transitionDuration: 1000
       };
@@ -37,10 +39,10 @@ const ResultPage = () => {
     }, []);
 
     useEffect(()=>{
-        setData({});
+        setState({ data: {}, loading: true });
         async function getResultData(){
-            let data = await axios.get('http://localhost:5000/api/result/' + encodeURI(keyword)).then((result)=> result.data[0]);
-            setData(data);
+            let data = await axios.get('https://skillset-analyser-api.herokuapp.com/api/result/' + encodeURI(keyword)).then((result)=> result.data[0]);
+            setState({data: data, loading: false});
         }
         getResultData();
     }, [keyword]);
@@ -56,15 +58,19 @@ const ResultPage = () => {
     }
 
     useEffect(()=>{
-        let choices = document.querySelectorAll(".result-chart-type>div");
-        console.log(choices[0].classList);
-        for (let i = 0; i < choices.length; i++){
-            choices[i].classList.remove('selected');
-        }
-        choices[type].classList.add('selected');
+        let { data, loading } = state;
 
-        if(!data.title){
+        if(data === undefined || !data.title){
             return ;
+        }
+
+        if(!loading){
+            let choices = document.querySelectorAll(".result-chart-type>div");
+            console.log(choices[0].classList);
+            for (let i = 0; i < choices.length; i++){
+                choices[i].classList.remove('selected');
+            }
+            choices[type].classList.add('selected');
         }
 
         if(type === 0){
@@ -145,23 +151,26 @@ const ResultPage = () => {
                 options: chartOption
             });
         }
-    }, [data, type]);
-    console.log(data);
+    }, [state.data, type]);
+    console.log(!state.data);
     return(
         <div className="result-container" id="section3">
+            {state.loading ? <Loading/> :
             <div className="result-box shadow">
                 <div className="result-title">
-                    {data.title && data.title.toLowerCase() === keyword.toLowerCase() ? <h3>Result for <span>{data.title}</span></h3> : <h3>Keyword Not Found. Do You Mean <span>{data.title}</span>?</h3>  }
+                    {state.data ? state.data.title.toLowerCase() === keyword.toLowerCase() ? <h3>Result for <span>{state.data.title}</span></h3> : <h3>Keyword Not Found. Do You Mean <span>{state.data.title}</span>?</h3> : <h3>Keyword Not Found. </h3>}
                 </div>
+                {state.data &&
                 <div className="result-chart-type">
                     <div onClick={()=>{ setType(0) }}>Bar Chart</div>
                     <div onClick={()=>{ setType(1) }}>Word Cloud</div>
-                </div>
+                </div>}
                 <div className="result-chart">
                     {type === 0 && <canvas id="chart"></canvas>}
-                    {type === 1 && <ReactWordcloud options={wordCloudOptions} words={data.results} />}
+                    {type === 1 && <ReactWordcloud options={wordCloudOptions} words={state.data.results} />}
                 </div>
             </div>
+            }
         </div>
     );
 }

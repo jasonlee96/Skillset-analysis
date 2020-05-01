@@ -61,7 +61,7 @@ const SearchBar = ({ pop, setPop }) => {
 
     useEffect(()=>{
         async function getQueryData(){
-            let data = await axios.get('http://localhost:5000/api/search/'+input).then(res => res.data);
+            let data = await axios.get('https://skillset-analyser-api.herokuapp.com/api/search/'+input).then(res => res.data);
 
             setQuery({...query, data: data, loading: false});
         }
@@ -91,7 +91,7 @@ const SearchBar = ({ pop, setPop }) => {
                 setInput(e.target.value)
                 setQuery({...query, press: false, loading: true})
             }}/>
-            {query.data.length > 0 && !query.press && <QueryBar data={query.data} setQuery={setQuery} setInput={setInput}/>}
+            {input.length > 0 && query.data.length > 0 && !query.press && <QueryBar data={query.data} setQuery={setQuery} setInput={setInput}/>}
             <button className="submit-btn" type="submit" onClick={search}>Search</button>
         </div>
     )
