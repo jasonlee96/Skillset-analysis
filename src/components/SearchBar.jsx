@@ -9,7 +9,7 @@ const SearchBar = ({ pop, setPop }) => {
     let [input, setInput] = useState("");
     let { setKeyword } = useContext(SearchContext);
 
-    function search(){
+    function search(keyword){
         if(pop){
             setPop(false);
             setTimeout(()=>{
@@ -19,8 +19,12 @@ const SearchBar = ({ pop, setPop }) => {
             setPop(true);
         }
         setQuery(INITIAL_STATE);
+        if(typeof(keyword) === "string"){
+            setKeyword(keyword);
+        }else{
+            setKeyword(input);
+        }
         setInput("");
-        setKeyword(input);
     }
 
     function adjustTextLayer(){
@@ -40,12 +44,14 @@ const SearchBar = ({ pop, setPop }) => {
         dropdown.value = i;
     }
 
+    // Effect Hook that only run once
     useEffect(()=>{
         let searchBar = document.querySelector(".bar");
         let scroll = window.pageYOffset;
         adjustTextLayer();
         window.addEventListener("resize", adjustTextLayer);
 
+        //Scroll effect
         document.addEventListener('scroll', (e)=>{
             let offset = window.pageYOffset;
             scroll = offset;
@@ -57,8 +63,55 @@ const SearchBar = ({ pop, setPop }) => {
                 searchBar.classList.remove("hide");
             }
         });
+
+        // Keyboard event
+        document.addEventListener('keydown', (e)=>{
+            let querybar = document.getElementsByClassName('query-item');
+            let currentSelected = document.getElementsByClassName('keyselect')[0];
+            let innerHTML = "";
+            if(e.code === "ArrowUp" && document.querySelector(".text-field") === document.activeElement){
+                e.preventDefault();
+                if(currentSelected){
+                    let index = Array.prototype.indexOf.call(querybar, currentSelected);
+                    if(index == 0){
+                        innerHTML = querybar[index].innerHTML;
+                    }else{
+                        querybar[index-1].classList.toggle('keyselect');
+                        innerHTML = querybar[index-1].innerHTML;
+                        currentSelected.classList.toggle('keyselect');
+                    }
+                }else{
+                    innerHTML = document.querySelector(".text-field").value;
+                }
+                setInput(innerHTML);
+            }else if (e.code === "ArrowDown" && document.querySelector(".text-field") === document.activeElement){
+                e.preventDefault();
+                if(!currentSelected){
+                    innerHTML = querybar[0].innerHTML;
+                    querybar[0].classList.toggle('keyselect');
+                }else{
+                    let index = Array.prototype.indexOf.call(querybar, currentSelected);
+                    if(index == querybar.length-1){
+                        innerHTML = querybar[index].innerHTML;
+                    }else{
+                        querybar[index+1].classList.toggle('keyselect');
+                        innerHTML = querybar[index+1].innerHTML;
+                        currentSelected.classList.toggle('keyselect');
+                    }
+                }
+                setInput(innerHTML);
+            }
+
+            if(e.keyCode === 13 && document.querySelector(".text-field") === document.activeElement){
+                e.preventDefault();
+                innerHTML = currentSelected ? currentSelected.innerHTML : document.querySelector(".text-field").value;
+                let button = document.querySelector(".submit-btn");
+                button.click();
+            }
+        })
     }, []);
 
+    // Effect Hook that only run when input vary 
     useEffect(()=>{
         async function getQueryData(){
             let data = await axios.get('https://skillset-analyser-api.herokuapp.com/api/search/'+input).then(res => res.data);

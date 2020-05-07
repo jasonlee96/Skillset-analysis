@@ -152,7 +152,7 @@ const ResultPage = () => {
             });
         }
     }, [state.data, type]);
-    console.log(!state.data);
+
     return(
         <div className="result-container" id="section3">
             {state.loading ? <Loading/> :

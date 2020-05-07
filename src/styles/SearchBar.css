@@ -172,6 +172,10 @@
     background: #DDDBAD;
 }
 
+.keyselect{
+    background: #DDDBAD;
+}
+
 @media only screen and (max-width: 600px){
     .bar{
         width: 450px;
