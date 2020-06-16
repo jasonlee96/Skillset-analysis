@@ -50,15 +50,16 @@
     transition: 0.4s linear;
 }
 
-.result-chart-type>div:first-child{
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px; 
-}
-
 .result-chart-type>div:last-child{
     border-left: none;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
+}
+
+.result-chart-type>div:first-child{
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px; 
+    border-left: 1px solid #333;
 }
 
 .result-chart-type>div:hover{
@@ -76,11 +77,7 @@
     height: 550px;
     width: 1000px;
 }
-/* @media only screen and (max-width: 1300px){
-    .result-box{
-        width: 800px
-    }
-} */
+
 
 @keyframes pop-out{
     from{

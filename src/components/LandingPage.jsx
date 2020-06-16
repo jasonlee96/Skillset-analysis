@@ -1,10 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import layer3 from '../img/layer3.png';
 import layer1 from '../img/layer1.png';
 import layer2 from '../img/layer2.png';
+import { SearchContext } from '../contexts/SearchContext';
 import '../styles/LandingPage.css';
 
 const LandingPage = React.memo(({children}) =>{
+    let { searchType } = useContext(SearchContext);
+
     function adjustTextLayer(){
         let w = document.documentElement.clientWidth;
         let offset = 450;
@@ -65,7 +68,9 @@ const LandingPage = React.memo(({children}) =>{
             </div>
             <div id="text-layer1">
                 <p id="p1">Skillset Analysis</p>
-                <p id="p2">Find out what skill sets  <br></br> you need for your future career!</p>
+                {searchType === 0 && <p key={searchType} id="p2">Find out what skill sets  <br></br> you need for your future career!</p>}
+                {searchType === 1 && <p key={searchType} id="p2">Find out Vacancy Demand  <br></br> in any state of Malaysia!</p>}
+                
             </div>
             {children}
             <img id="layer0" src={layer3} alt="parallax-0"/>

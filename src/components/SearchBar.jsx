@@ -2,12 +2,15 @@ import React, { useEffect, useState, useContext } from 'react';
 import "../styles/SearchBar.css";
 import axios from 'axios';
 import { SearchContext } from '../contexts/SearchContext';
+import config from '../config';
 
 const SearchBar = ({ pop, setPop }) => {
     const INITIAL_STATE = {data: [], press: false, loading: false};
+    const url = config.url;
+
     let [query, setQuery] = useState(INITIAL_STATE);
     let [input, setInput] = useState("");
-    let { setKeyword } = useContext(SearchContext);
+    let { setKeyword, searchType, setSearchType } = useContext(SearchContext);
 
     function search(keyword){
         if(pop){
@@ -42,6 +45,8 @@ const SearchBar = ({ pop, setPop }) => {
     function selectDropdown(i){
         let dropdown = document.getElementsByClassName("dropdown")[0];
         dropdown.value = i;
+        setSearchType(i);
+        setInput("");
     }
 
     // Effect Hook that only run once
@@ -63,7 +68,13 @@ const SearchBar = ({ pop, setPop }) => {
                 searchBar.classList.remove("hide");
             }
         });
-
+        // mouse event
+        document.addEventListener('mousedown', (e)=>{
+            if(!e.target.classList.contains("dropdown-item")){
+                let dropdown = document.getElementsByClassName("dropdown-content")[0];
+                dropdown.classList.toggle("show", false);
+            }
+        })
         // Keyboard event
         document.addEventListener('keydown', (e)=>{
             let querybar = document.getElementsByClassName('query-item');
@@ -73,7 +84,7 @@ const SearchBar = ({ pop, setPop }) => {
                 e.preventDefault();
                 if(currentSelected){
                     let index = Array.prototype.indexOf.call(querybar, currentSelected);
-                    if(index == 0){
+                    if(index === 0){
                         innerHTML = querybar[index].innerHTML;
                     }else{
                         querybar[index-1].classList.toggle('keyselect');
@@ -91,7 +102,7 @@ const SearchBar = ({ pop, setPop }) => {
                     querybar[0].classList.toggle('keyselect');
                 }else{
                     let index = Array.prototype.indexOf.call(querybar, currentSelected);
-                    if(index == querybar.length-1){
+                    if(index === querybar.length-1){
                         innerHTML = querybar[index].innerHTML;
                     }else{
                         querybar[index+1].classList.toggle('keyselect');
@@ -114,8 +125,13 @@ const SearchBar = ({ pop, setPop }) => {
     // Effect Hook that only run when input vary 
     useEffect(()=>{
         async function getQueryData(){
-            let data = await axios.get('https://skillset-analyser-api.herokuapp.com/api/search/'+input).then(res => res.data);
-
+            let data;
+            if(searchType === 0){
+                data = await axios.get(url+'api/search/'+input).then(res => res.data);
+            }else{
+                data = await axios.get(url+'api/title_search/'+input).then(res => res.data);
+            }
+            console.log(data);
             setQuery({...query, data: data, loading: false});
         }
         

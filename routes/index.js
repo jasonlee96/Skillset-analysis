@@ -5,6 +5,8 @@ const bodyParser = require('body-parser');
 const app = express();
 const resultRoutes = require('./result');
 const searchRoutes = require('./search');
+const titleRoutes = require('./title');
+const titleSearchRoutes = require('./titleSearch');
 
 mongoose.connect("mongodb+srv://jason:jasondb@fyp-9p31t.mongodb.net/fyp?retryWrites=true&w=majority", { useNewUrlParser: true});
 app.use(bodyParser.json());
@@ -23,6 +25,9 @@ app.use((req, res, next) => {
 
 app.use('/api/search', searchRoutes);
 app.use('/api/result', resultRoutes);
+app.use('/api/title', titleRoutes);
+app.use('/api/title_search', titleSearchRoutes);
+
 
 app.listen(PORT, () => {
   console.log(`app running on port ${PORT}`)
