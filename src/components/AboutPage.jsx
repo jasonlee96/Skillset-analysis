@@ -14,7 +14,9 @@ const AboutPage = React.memo(() => {
                 </div>
                 <div className="about-content">
                     <p>It is an analysis system to reveal top trending skill set for any job position and vacancy demand at any location via using data mining method!</p>
-                    <p>Author's GitHub: <span id="link">https://github.com/jasonlee96</span></p>
+                    <p>Skill set analysis was using Unsupervised Learning Method as most of the job adverts data was unstructured. <br></br>Vacancy Demand analysis was using frequency analysis on job adverts title to find which job title is the most frequent in an area.</p>
+                    <p>Both results was process using bigram model to predict the word is unigram or bigram.</p>
+                    <p>Website's Repo: <span id="link">https://github.com/jasonlee96/Skillset-analysis</span></p>
                 </div>
             </div>
         </div>
