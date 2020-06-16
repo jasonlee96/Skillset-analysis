@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/Skillset-analysis/static/css/main.f4f8993a.chunk.css",
-    "main.js": "/Skillset-analysis/static/js/main.e18f7f81.chunk.js",
-    "main.js.map": "/Skillset-analysis/static/js/main.e18f7f81.chunk.js.map",
+    "main.css": "/Skillset-analysis/static/css/main.b10f5454.chunk.css",
+    "main.js": "/Skillset-analysis/static/js/main.aa160b17.chunk.js",
+    "main.js.map": "/Skillset-analysis/static/js/main.aa160b17.chunk.js.map",
     "runtime-main.js": "/Skillset-analysis/static/js/runtime-main.bf684ce4.js",
     "runtime-main.js.map": "/Skillset-analysis/static/js/runtime-main.bf684ce4.js.map",
     "static/css/2.c1ce4baf.chunk.css": "/Skillset-analysis/static/css/2.c1ce4baf.chunk.css",
-    "static/js/2.bc729998.chunk.js": "/Skillset-analysis/static/js/2.bc729998.chunk.js",
-    "static/js/2.bc729998.chunk.js.map": "/Skillset-analysis/static/js/2.bc729998.chunk.js.map",
+    "static/js/2.e6a61242.chunk.js": "/Skillset-analysis/static/js/2.e6a61242.chunk.js",
+    "static/js/2.e6a61242.chunk.js.map": "/Skillset-analysis/static/js/2.e6a61242.chunk.js.map",
     "index.html": "/Skillset-analysis/index.html",
-    "precache-manifest.18e097d67957251dd1d3448d6ff5a284.js": "/Skillset-analysis/precache-manifest.18e097d67957251dd1d3448d6ff5a284.js",
+    "precache-manifest.3e89bcf83e530796b9c161b1fe298835.js": "/Skillset-analysis/precache-manifest.3e89bcf83e530796b9c161b1fe298835.js",
     "service-worker.js": "/Skillset-analysis/service-worker.js",
     "static/css/2.c1ce4baf.chunk.css.map": "/Skillset-analysis/static/css/2.c1ce4baf.chunk.css.map",
-    "static/css/main.f4f8993a.chunk.css.map": "/Skillset-analysis/static/css/main.f4f8993a.chunk.css.map",
-    "static/js/2.bc729998.chunk.js.LICENSE.txt": "/Skillset-analysis/static/js/2.bc729998.chunk.js.LICENSE.txt",
+    "static/css/main.b10f5454.chunk.css.map": "/Skillset-analysis/static/css/main.b10f5454.chunk.css.map",
+    "static/js/2.e6a61242.chunk.js.LICENSE.txt": "/Skillset-analysis/static/js/2.e6a61242.chunk.js.LICENSE.txt",
     "static/media/about-layer.png": "/Skillset-analysis/static/media/about-layer.6dba1c0a.png",
     "static/media/LandingPage.css": "/Skillset-analysis/static/media/backgroundfyp.0ba57ab5.jpg",
     "static/media/layer1.png": "/Skillset-analysis/static/media/layer1.7bc09400.png",
@@ -23,8 +23,8 @@
   "entrypoints": [
     "static/js/runtime-main.bf684ce4.js",
     "static/css/2.c1ce4baf.chunk.css",
-    "static/js/2.bc729998.chunk.js",
-    "static/css/main.f4f8993a.chunk.css",
-    "static/js/main.e18f7f81.chunk.js"
+    "static/js/2.e6a61242.chunk.js",
+    "static/css/main.b10f5454.chunk.css",
+    "static/js/main.aa160b17.chunk.js"
   ]
 }
