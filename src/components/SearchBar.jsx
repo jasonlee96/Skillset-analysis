@@ -127,9 +127,9 @@ const SearchBar = ({ pop, setPop }) => {
         async function getQueryData(){
             let data;
             if(searchType === 0){
-                data = await axios.get(url+'api/search/'+input).then(res => res.data);
+                data = await axios.get(url+'api/search/'+encodeURI(input).replace("#", "%23")).then(res => res.data);
             }else{
-                data = await axios.get(url+'api/title_search/'+input).then(res => res.data);
+                data = await axios.get(url+'api/title_search/'+encodeURI(input).replace("#", "%23")).then(res => res.data);
             }
             console.log(data);
             setQuery({...query, data: data, loading: false});

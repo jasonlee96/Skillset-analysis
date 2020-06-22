@@ -52,9 +52,9 @@ const ResultPage = () => {
         async function getResultData(){
             let data;
             if(searchType === 0){
-                data = await axios.get(url+'api/result/' + encodeURI(keyword)).then((result)=> result.data[0]);
+                data = await axios.get(url+'api/result/' + encodeURI(keyword).replace("#", "%23")).then((result)=> result.data[0]);
             }else{
-                data = await axios.get(url+'api/title/' + encodeURI(keyword)).then((result)=> result.data[0]);
+                data = await axios.get(url+'api/title/' + encodeURI(keyword).replace("#", "%23")).then((result)=> result.data[0]);
             }
             console.log(data);
             setState({data: data, loading: false});
