@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "973e4d69142886f21511b5da26fe68c7",
+    "revision": "e805449bbc322880faffa3393d45629f",
     "url": "/Skillset-analysis/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Skillset-analysis/static/css/2.c1ce4baf.chunk.css"
   },
   {
-    "revision": "438fb7d0e3b5f3e89c60",
+    "revision": "ab3b8ab8c5ca40861630",
     "url": "/Skillset-analysis/static/css/main.2c72cfac.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Skillset-analysis/static/js/2.389b7b3e.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "438fb7d0e3b5f3e89c60",
-    "url": "/Skillset-analysis/static/js/main.30b51003.chunk.js"
+    "revision": "ab3b8ab8c5ca40861630",
+    "url": "/Skillset-analysis/static/js/main.012b0c63.chunk.js"
   },
   {
     "revision": "4503d39c45d7fee3c6a7",
