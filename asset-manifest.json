@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Skillset-analysis/static/css/main.2c72cfac.chunk.css",
-    "main.js": "/Skillset-analysis/static/js/main.012b0c63.chunk.js",
-    "main.js.map": "/Skillset-analysis/static/js/main.012b0c63.chunk.js.map",
+    "main.js": "/Skillset-analysis/static/js/main.c2cf212b.chunk.js",
+    "main.js.map": "/Skillset-analysis/static/js/main.c2cf212b.chunk.js.map",
     "runtime-main.js": "/Skillset-analysis/static/js/runtime-main.bf684ce4.js",
     "runtime-main.js.map": "/Skillset-analysis/static/js/runtime-main.bf684ce4.js.map",
     "static/css/2.c1ce4baf.chunk.css": "/Skillset-analysis/static/css/2.c1ce4baf.chunk.css",
     "static/js/2.389b7b3e.chunk.js": "/Skillset-analysis/static/js/2.389b7b3e.chunk.js",
     "static/js/2.389b7b3e.chunk.js.map": "/Skillset-analysis/static/js/2.389b7b3e.chunk.js.map",
     "index.html": "/Skillset-analysis/index.html",
-    "precache-manifest.f1f778cdec09cec017cb2e9cfe53d58d.js": "/Skillset-analysis/precache-manifest.f1f778cdec09cec017cb2e9cfe53d58d.js",
+    "precache-manifest.1224d57fd13530288720b9a9f0159db0.js": "/Skillset-analysis/precache-manifest.1224d57fd13530288720b9a9f0159db0.js",
     "service-worker.js": "/Skillset-analysis/service-worker.js",
     "static/css/2.c1ce4baf.chunk.css.map": "/Skillset-analysis/static/css/2.c1ce4baf.chunk.css.map",
     "static/css/main.2c72cfac.chunk.css.map": "/Skillset-analysis/static/css/main.2c72cfac.chunk.css.map",
@@ -25,6 +25,6 @@
     "static/css/2.c1ce4baf.chunk.css",
     "static/js/2.389b7b3e.chunk.js",
     "static/css/main.2c72cfac.chunk.css",
-    "static/js/main.012b0c63.chunk.js"
+    "static/js/main.c2cf212b.chunk.js"
   ]
 }
