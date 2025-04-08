@@ -5,3 +5,5 @@ It is MERN Stack application that analyze top trending skill set for some job po
 A webpage that created with React.JS Framework and published with gh-pages package. The link below was the published link of web pages.
 
 https://jasonlee96.github.io/Skillset-analysis/
+
+Python repo: https://github.com/jasonlee96/Skillset-and-Vacancy-Analysis
